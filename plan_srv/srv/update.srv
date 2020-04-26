@@ -1,0 +1,3 @@
+int8 goal_x
+int8 goal_y
+int8 goal_theta

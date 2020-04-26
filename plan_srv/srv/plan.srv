@@ -1,0 +1,6 @@
+string id
+int8 goal_x
+int8 goal_y
+int8 goal_theta
+---
+nav_msgs/Path plan
