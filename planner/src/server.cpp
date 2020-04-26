@@ -5,9 +5,6 @@
 bool callback(plan_srv::update::Request& req,
               plan_srv::update::Response &res)
 {
-    ROS_INFO("update x: %d",req.goal_x);
-    ROS_INFO("update y: %d",req.goal_y);
-    ROS_INFO("update theta: %d",req.goal_theta);
     return true;
 }
 

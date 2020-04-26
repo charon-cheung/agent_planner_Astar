@@ -13,12 +13,12 @@
 
     <node name="agent_2" pkg="agent" type="agent_node" output="screen" >
         <param name="id" value="agent_2" />
-        <param name="x" value="0" />
-        <param name="y" value="3" />
+	<param name="x" value="0" />
+	<param name="y" value="3" />
         <param name="theta" value="0" />
 
-        <param name="goal_x" value="5" />
-        <param name="goal_y" value="4" />
+        <param name="goal_x" value="6" />
+	<param name="goal_y" value="3" />
         <param name="goal_theta" value="0" />
       <remap from="agent_feedback" to="node2/agent_feedback"/>
     </node>

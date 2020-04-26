@@ -46,15 +46,11 @@ nav_msgs::Path calculate_path(boost::shared_ptr<pos_msg::pos const> start, plan_
     
     auto path = generator.findPath(startVec, goalVec);
 
-//       for(auto& coordinate : path)
-//       {
-//           std::cout << coordinate.x << " " << coordinate.y << "\n";
-//       }
     unsigned int size = path.size();
     ROS_INFO("path size: %d", size);
     if(size==0)
     {
-        ROS_WARN("sorry, A-star didn't find path");
+        ROS_WARN("sorry, A-star didn't find a path");
         return plan;
     }
     plan.poses.reserve(size);
@@ -107,8 +103,7 @@ int main(int argv, char** argc)
     signal(SIGINT,mySigintHandler);
 
     generator.setWorldSize({10, 10});
-    generator.setHeuristic(AStar::Heuristic::euclidean);
-    generator.setDiagonalMovement(true);
+    generator.setHeuristic(AStar::Heuristic::manhattan);
 
     ros::ServiceServer server = nh.advertiseService("get_plan",callback);
     ROS_INFO("----- waiting for agent's request -----");

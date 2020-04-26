@@ -6,6 +6,7 @@
 #include <nav_msgs/Path.h>
 #include <iostream>
 #include <signal.h>
+#include <plan_srv/update.h>
 using namespace std;
 
 
@@ -19,6 +20,7 @@ void mySigintHandler(int sig)
 void serviceRequest(ros::NodeHandle nh, plan_srv::plan srv)
 {
     ros::ServiceClient client = nh.serviceClient<plan_srv::plan>("/get_plan");
+
     while(!client.exists())
     {
         ROS_WARN("client %s is invalid, waiting for service get_plan", srv.request.id.c_str());
@@ -33,7 +35,7 @@ void serviceRequest(ros::NodeHandle nh, plan_srv::plan srv)
     }
 
     ROS_INFO("receive motion plan from planner:");
-    unsigned int size = srv.response.plan.poses.size();
+    int size = srv.response.plan.poses.size();
     if(size>0)
     {
         for(int i=0; i<size; i++)
