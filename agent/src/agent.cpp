@@ -39,11 +39,11 @@ void serviceRequest(ros::NodeHandle nh, plan_srv::plan srv)
         for(int i=0; i<size; i++)
             cout << srv.response.plan.poses.at(i) <<endl;
         ros::Publisher gui_pub = nh.advertise<nav_msgs::Path>("gui_path",100,false);
- 	ros::Rate rate(1000);
-	while(ros::ok())
+        ros::Rate rate(1000);
+        while(ros::ok())
         {
             gui_pub.publish(srv.response.plan);
-	}
+        }
     }
     else
     {

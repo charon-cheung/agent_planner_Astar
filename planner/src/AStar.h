@@ -4,6 +4,8 @@
 #include <vector>
 #include <functional>
 #include <set>
+#include <iostream>
+using namespace std;
 
 namespace AStar
 {

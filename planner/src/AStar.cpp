@@ -99,28 +99,28 @@ AStar::CoordinateList AStar::Generator::findPath(Vec2i source_, Vec2i target_)
             uint totalCost = current->G + ((i < 4) ? 10 : 14);
 
             Node *successor = findNodeOnList(openSet, newCoordinates);
-            if (successor == nullptr) {
+            if (successor == nullptr)
+            {
                 successor = new Node(newCoordinates, current);
                 successor->G = totalCost;
                 successor->H = heuristic(successor->coordinates, target_);
                 openSet.insert(successor);
             }
-            else if (totalCost < successor->G) {
+            else if (totalCost < successor->G)
+            {
                 successor->parent = current;
                 successor->G = totalCost;
             }
         }
     }
-
     CoordinateList path;
-    while (current != nullptr) {
+    while (current != nullptr)
+    {
         path.push_back(current->coordinates);
         current = current->parent;
     }
-
     releaseNodes(openSet);
     releaseNodes(closedSet);
-
     return path;
 }
 
